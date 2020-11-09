@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<XmlStateMachines version="KaraX 1.0 kara">
+    <XmlStateMachine actor="Kara" startState="zum_eingang">
+        <XmlState finalstate="false" name="laufe" x="238.0" y="104.0">
+            <XmlSensors>
+                <XmlSensor name="treeFront"/>
+                <XmlSensor name="treeRight"/>
+                <XmlSensor name="onLeaf"/>
+            </XmlSensors>
+        </XmlState>
+        <XmlState finalstate="false" name="verschiebe_pilz" x="439.0" y="175.0">
+            <XmlSensors/>
+        </XmlState>
+        <XmlState finalstate="true" name="Stop" x="562.0" y="141.0">
+            <XmlSensors/>
+        </XmlState>
+        <XmlState finalstate="false" name="tuer" x="396.0" y="68.0">
+            <XmlSensors>
+                <XmlSensor name="mushroomFront"/>
+                <XmlSensor name="onLeaf"/>
+            </XmlSensors>
+        </XmlState>
+        <XmlState finalstate="false" name="zum_eingang" x="116.0" y="101.0">
+            <XmlSensors>
+                <XmlSensor name="treeRight"/>
+            </XmlSensors>
+        </XmlState>
+        <XmlTransition from="laufe" to="laufe">
+            <XmlSensorValues>
+                <XmlSensorValue name="treeFront" value="2"/>
+                <XmlSensorValue name="treeRight" value="1"/>
+                <XmlSensorValue name="onLeaf" value="2"/>
+            </XmlSensorValues>
+            <XmlCommands>
+                <XmlCommand name="move"/>
+            </XmlCommands>
+        </XmlTransition>
+        <XmlTransition from="laufe" to="tuer">
+            <XmlSensorValues>
+                <XmlSensorValue name="treeFront" value="2"/>
+                <XmlSensorValue name="treeRight" value="2"/>
+                <XmlSensorValue name="onLeaf" value="2"/>
+            </XmlSensorValues>
+            <XmlCommands>
+                <XmlCommand name="turnRight"/>
+                <XmlCommand name="move"/>
+            </XmlCommands>
+        </XmlTransition>
+        <XmlTransition from="laufe" to="Stop">
+            <XmlSensorValues>
+                <XmlSensorValue name="treeFront" value="2"/>
+                <XmlSensorValue name="treeRight" value="2"/>
+                <XmlSensorValue name="onLeaf" value="1"/>
+            </XmlSensorValues>
+            <XmlCommands/>
+        </XmlTransition>
+        <XmlTransition from="laufe" to="laufe">
+            <XmlSensorValues>
+                <XmlSensorValue name="treeFront" value="1"/>
+                <XmlSensorValue name="treeRight" value="1"/>
+                <XmlSensorValue name="onLeaf" value="2"/>
+            </XmlSensorValues>
+            <XmlCommands>
+                <XmlCommand name="turnLeft"/>
+            </XmlCommands>
+        </XmlTransition>
+        <XmlTransition from="laufe" to="tuer">
+            <XmlSensorValues>
+                <XmlSensorValue name="treeFront" value="1"/>
+                <XmlSensorValue name="treeRight" value="2"/>
+                <XmlSensorValue name="onLeaf" value="2"/>
+            </XmlSensorValues>
+            <XmlCommands>
+                <XmlCommand name="turnRight"/>
+                <XmlCommand name="move"/>
+            </XmlCommands>
+        </XmlTransition>
+        <XmlTransition from="verschiebe_pilz" to="laufe">
+            <XmlSensorValues/>
+            <XmlCommands>
+                <XmlCommand name="move"/>
+                <XmlCommand name="turnLeft"/>
+                <XmlCommand name="turnLeft"/>
+                <XmlCommand name="move"/>
+                <XmlCommand name="move"/>
+                <XmlCommand name="turnRight"/>
+                <XmlCommand name="move"/>
+            </XmlCommands>
+        </XmlTransition>
+        <XmlTransition from="tuer" to="verschiebe_pilz">
+            <XmlSensorValues>
+                <XmlSensorValue name="mushroomFront" value="1"/>
+                <XmlSensorValue name="onLeaf" value="2"/>
+            </XmlSensorValues>
+            <XmlCommands/>
+        </XmlTransition>
+        <XmlTransition from="tuer" to="laufe">
+            <XmlSensorValues>
+                <XmlSensorValue name="mushroomFront" value="2"/>
+                <XmlSensorValue name="onLeaf" value="2"/>
+            </XmlSensorValues>
+            <XmlCommands>
+                <XmlCommand name="turnLeft"/>
+                <XmlCommand name="turnLeft"/>
+                <XmlCommand name="move"/>
+                <XmlCommand name="turnRight"/>
+                <XmlCommand name="move"/>
+            </XmlCommands>
+        </XmlTransition>
+        <XmlTransition from="tuer" to="laufe">
+            <XmlSensorValues>
+                <XmlSensorValue name="mushroomFront" value="2"/>
+                <XmlSensorValue name="onLeaf" value="1"/>
+            </XmlSensorValues>
+            <XmlCommands>
+                <XmlCommand name="removeLeaf"/>
+                <XmlCommand name="turnLeft"/>
+                <XmlCommand name="turnLeft"/>
+                <XmlCommand name="move"/>
+                <XmlCommand name="turnRight"/>
+                <XmlCommand name="move"/>
+            </XmlCommands>
+        </XmlTransition>
+        <XmlTransition from="zum_eingang" to="zum_eingang">
+            <XmlSensorValues>
+                <XmlSensorValue name="treeRight" value="1"/>
+            </XmlSensorValues>
+            <XmlCommands>
+                <XmlCommand name="move"/>
+            </XmlCommands>
+        </XmlTransition>
+        <XmlTransition from="zum_eingang" to="laufe">
+            <XmlSensorValues>
+                <XmlSensorValue name="treeRight" value="2"/>
+            </XmlSensorValues>
+            <XmlCommands>
+                <XmlCommand name="turnRight"/>
+                <XmlCommand name="move"/>
+                <XmlCommand name="move"/>
+                <XmlCommand name="putLeaf"/>
+                <XmlCommand name="turnRight"/>
+                <XmlCommand name="move"/>
+            </XmlCommands>
+        </XmlTransition>
+    </XmlStateMachine>
+    <XmlSensorDefinition description="Baum vorne?" identifier="treeFront" name="treeFront"/>
+    <XmlSensorDefinition description="Baum links?" identifier="treeLeft" name="treeLeft"/>
+    <XmlSensorDefinition description="Baum rechts?" identifier="treeRight" name="treeRight"/>
+    <XmlSensorDefinition description="Pilz vorne?" identifier="mushroomFront" name="mushroomFront"/>
+    <XmlSensorDefinition description="Kleeblatt unten?" identifier="onLeaf" name="onLeaf"/>
+</XmlStateMachines>
